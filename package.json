@@ -1,34 +1,39 @@
 {
   "name": "image-transform-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "transform image from svg/jpeg/png/WebP/tiff to jpeg/png/WebP/tiff",
   "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
+  "module": "lib/index.es.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "start": "npm run dev",
-    "dev": "rollup -c rollup.config.js -w --environment NODE_ENV:development",
-    "build": "rollup -c rollup.config.js --environment NODE_ENV:production",
+    "dev": "rollup -c rollup.config.js -w",
+    "clean": "rimraf ./lib ./types",
+    "build": "npm run clean && rollup -c rollup.config.js",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
   },
   "keywords": [
+    "image-transform-plugin",
     "image-transform",
     "webpack-plugin",
     "transform",
     "plugin"
   ],
   "files": [
-    "lib/"
+    "lib",
+    "types",
+    "README.md",
+    "LICENSE"
   ],
   "homepage": "https://github.com/panyanbin/image-transform-plugin",
   "author": "panyanbin",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@types/sharp": "^0.30.2",
-    "@babel/core": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@rollup/plugin-babel": "^5.3.1",
+    "@types/webpack": "^5.28.0",
+    "sharp": "^0.30.6"
+  },
+  "devDependencies": {
     "@rollup/plugin-eslint": "^8.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^4.0.0",
@@ -40,13 +45,11 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "2.6.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.75.5",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
-    "sharp": "^0.30.6",
-    "webpack": "^5.28.0",
     "tslib": "^2.4.0",
     "typescript": "^4.7.3"
   }

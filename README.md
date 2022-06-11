@@ -9,7 +9,6 @@
 ## 安装
 
 ```bash
-npm i sharp -save
 npm i image-transform-plugin -D
 ```
 
@@ -17,9 +16,15 @@ npm i image-transform-plugin -D
 
 ## 使用
 
-把 progress.png 输出 png 图和 jpeg 图
+```js
+new ImageTransformPlugin(config: ImageTransformConfig, option?: ImageTransformOption)
+```
+
+
 
 #### webpack plugin 使用
+
+webpack打包完成后，自动把 progress.png 输出两张图: png 图和 jpeg 图
 
 ```js
 const { ImageTransformPlugin, ImageTransformFormat } = require("image-transform-plugin");
@@ -46,7 +51,11 @@ module.exports = {
 };
 ```
 
+
+
 #### Node 使用
+
+把 progress.svg 输出两张图: png 图和 jpeg 图
 
 ```js
 import { ImageTransformPlugin, ImageTransformFormat } from "image-transform-plugin";
@@ -70,30 +79,47 @@ imageTransform.transform();
 
 
 
-## 配置项
+## config参数
 
-#### input
+#### - input
 
 Type: String
 
-配置需转换源图的文件地址，eg: `./asset/icon.svg`
+配置需转换源图的文件地址，输入源的图片类型支持格式有`SVG`/`PNG`/`JPEG`/`WebP`/`TIFF`。
 
-#### format
+eg: `./asset/icon.svg`
 
-Type: ImageTransformFormat
-Default: 'JPEG'
 
-输出图片的格式类型，可选格式有`PNG`/`JPEG`/`WebP`/`TIFF`
 
-#### output
+#### - format
+
+Type: ImageTransformFormat  
+
+输出图片的格式类型，可选有`PNG`/`JPEG`/`WebP`/`TIFF`
+
+
+
+#### - output
 
 Type: ImageTransformOutput | ImageTransformOutput[]
 
 配置转换图的输出列表
 
-ImageTransformOutput 的字段
+ImageTransformOutput 对象属性：
 
 - file：输出的图片地址，eg: `./dist/icon_64x64.png`
-- format：输出图片的格式类型，Type：ImageTransformFormat
-- width：输出图片的宽
+- format：输出图片的格式类型，可选值同上format
+- width：输出图片的宽，可选
+- height：输出图片的高，可选
 - height：输出图片的高
+
+
+
+## option参数
+
+#### - autoCreateOutputDir
+
+Type: Boolean  
+
+输出的图片地址目录不存在时，是否自动创建该目录。默认值为true，若改为false且目录不存在时，停止转换
+
