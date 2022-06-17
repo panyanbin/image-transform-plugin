@@ -1,6 +1,6 @@
 {
   "name": "image-transform-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "transform image from svg/jpeg/png/WebP/tiff to jpeg/png/WebP/tiff",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -10,12 +10,14 @@
     "dev": "rollup -c rollup.config.js -w",
     "clean": "rimraf ./lib ./types",
     "build": "npm run clean && rollup -c rollup.config.js",
-    "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "test": "npm run build && node test/index.js"
   },
   "keywords": [
     "image-transform-plugin",
     "image-transform",
-    "webpack-plugin",
+    "SVG transform",
+    "PNG transform",
     "transform",
     "plugin"
   ],
@@ -30,7 +32,6 @@
   "license": "MIT",
   "dependencies": {
     "@types/sharp": "^0.30.2",
-    "@types/webpack": "^5.28.0",
     "sharp": "^0.30.6"
   },
   "devDependencies": {

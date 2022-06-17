@@ -1,3 +1,6 @@
+## v0.3.0
+- [x] 移除webpack-plugin的配置，webpack使用image-transform-webpack-plugin包
+
 ## v0.2.0
 
 - [x] 支持输出流文件目录不存在时自动创建的配置选项

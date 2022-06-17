@@ -2,7 +2,7 @@
   // 包含项规则
   "include": ["src/*.ts", "src/*.tsx", "src/**/*.ts", "src/**/*.tsx"],
   // 排除项规则
-  "exclude": ["node_modules", "*.d.ts", "**/*.d.ts"],
+  "exclude": ["node_modules", "*.d.ts", "**/*.d.ts", "test"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

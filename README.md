@@ -20,41 +20,6 @@ npm i image-transform-plugin -D
 new ImageTransformPlugin(config: ImageTransformConfig, option?: ImageTransformOption)
 ```
 
-
-
-#### webpack plugin 使用
-
-webpack打包完成后，自动把 progress.png 输出两张图: png 图和 jpeg 图
-
-```js
-const { ImageTransformPlugin, ImageTransformFormat } = require("image-transform-plugin");
-
-module.exports = {
-  //...
-  plugins: [
-    // ...other plugin
-    new ImageTransformPlugin({
-      input: "./assets/progress.png",
-      output: [
-        {
-          file: "./dist/progress.png",
-          format: ImageTransformFormat.PNG,
-          width: 800,
-        },
-        {
-          file: "./dist/progress.jpeg",
-          format: ImageTransformFormat.JPEG,
-        },
-      ],
-    }),
-  ],
-};
-```
-
-
-
-#### Node 使用
-
 把 progress.svg 输出两张图: png 图和 jpeg 图
 
 ```js
@@ -77,11 +42,12 @@ const imageTransform = new ImageTransformPlugin({
 imageTransform.transform();
 ```
 
+> 注意：在webpack中使用，可以使用包`image-transform-webpack-plugin`
 
 
 ## config参数
 
-#### - input
+#### input
 
 Type: String
 
@@ -91,7 +57,7 @@ eg: `./asset/icon.svg`
 
 
 
-#### - format
+#### format
 
 Type: ImageTransformFormat  
 
@@ -99,7 +65,7 @@ Type: ImageTransformFormat
 
 
 
-#### - output
+#### output
 
 Type: ImageTransformOutput | ImageTransformOutput[]
 
@@ -111,13 +77,11 @@ ImageTransformOutput 对象属性：
 - format：输出图片的格式类型，可选值同上format
 - width：输出图片的宽，可选
 - height：输出图片的高，可选
-- height：输出图片的高
-
 
 
 ## option参数
 
-#### - autoCreateOutputDir
+#### autoCreateOutputDir
 
 Type: Boolean  
 
